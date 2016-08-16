@@ -102,7 +102,6 @@ function joinContent(data){
 		}
 	}else{
 		content += data;
-		content += '\n';
 	}
 	return content;
 }
@@ -111,6 +110,7 @@ function writeToFileInDepth(data,isAdded){
 	content = content.replace(/\,\]/g,"]");
 	content = content.replace(/\,\}/g,"}");
 	content = content.replace(/\,$/,"");
+	content += "\n";
 	if(!isAdded){
 		fs.writeFileSync(fileDir,content);
 	}else{
