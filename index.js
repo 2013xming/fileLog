@@ -102,10 +102,12 @@ function joinContent(data){
 		}
 	}else{
 		content += data;
+		content += '\n';
 	}
 	return content;
 }
 function writeToFileInDepth(data,isAdded){
+	content = "";
 	content = joinContent(data);
 	content = content.replace(/\,\]/g,"]");
 	content = content.replace(/\,\}/g,"}");
@@ -118,10 +120,21 @@ function writeToFileInDepth(data,isAdded){
 	}
 	
 }
-function fileLogOut(logPath,data,isAdded){
-	fileDir = logPath || "./logs/filelog.log";
-	console.log(fileDir);
+function fileLogOut(data,logPath,isAdded){
+	if(logPath){
+		if(jquery_type(logPath) ==="boolean"){         //如果第二个参数是指示是否追加的
+			fileDir = "./filelog/";   //fileDir 取默认值
+			isAdded = isAdded ? isAdded : logPath;  
+		}else{
+			fileDir = logPath;
+		}
+	}else{
+		fileDir = "./filelog/";   //fileDir 取默认值
+	}
+	fileDir = jquery_type(logPath)=== "boolean": "./filelog/" ? (logPath || "./filelog/");
 	fs.existsSync(fileDir) || fs.mkdirSync(fileDir);
+	fileDir += "filelog.log"; 
+//	console.log(fileDir);
 	writeToFileInDepth(data,isAdded);
 }
 module.exports = {

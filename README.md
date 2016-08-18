@@ -27,3 +27,5 @@ filelog.out(test);
 filelog.out(test,fileDir);
 
 filelog.out(test,fileDir,false);
+
+filelog.out(test,true);
