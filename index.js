@@ -131,10 +131,8 @@ function fileLogOut(data,logPath,isAdded){
 	}else{
 		fileDir = "./filelog/";   //fileDir 取默认值
 	}
-	fileDir = jquery_type(logPath)=== "boolean": "./filelog/" ? (logPath || "./filelog/");
 	fs.existsSync(fileDir) || fs.mkdirSync(fileDir);
 	fileDir += "filelog.log"; 
-//	console.log(fileDir);
 	writeToFileInDepth(data,isAdded);
 }
 module.exports = {
